@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import MeetupList from "../components/meetups/MeetupList";
 // import Layout from "../components/layout/Layout";
 const DUMMY_MEETUPS = [
@@ -20,9 +21,15 @@ const DUMMY_MEETUPS = [
 ];
 
 function HomePage() {
+  const [loadedMeetups, setLoadedMeetups] = useState([]);
+  useEffect(() => {
+    // Send a http request and fetch data
+    setLoadedMeetups(DUMMY_MEETUPS);
+  }, []);
+
   return (
     // <Layout>
-    <MeetupList meetups={DUMMY_MEETUPS} />
+    <MeetupList meetups={loadedMeetups} />
     // </Layout>
   );
 }
