@@ -24,28 +24,28 @@ function HomePage(props) {
 }
 
 // Server side generation
-export async function getServerSideProps(context) {
-  const req = context.req;
-  const res = context.res;
+// export async function getServerSideProps(context) {
+//   const req = context.req;
+//   const res = context.res;
 
-  // fetch data from an API
-
-  return {
-    props: {
-      meetups: DUMMY_MEETUPS,
-    },
-  };
-}
-
-// Static Generation
-// export async function getStaticProps() {
 //   // fetch data from an API
+
 //   return {
 //     props: {
 //       meetups: DUMMY_MEETUPS,
 //     },
-//     revalidate: 10, // Incremental Static Generation
 //   };
 // }
+
+// Static Generation
+export async function getStaticProps() {
+  // fetch data from an API
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS,
+    },
+    revalidate: 10, // Incremental Static Generation
+  };
+}
 
 export default HomePage;
