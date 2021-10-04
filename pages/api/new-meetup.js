@@ -1,19 +1,21 @@
 import { MongoClient } from "mongodb";
 
-// api/new-meetup
-// POST  /api/new-meetup
+// /api/new-meetup
+// POST /api/new-meetup
 
 async function handler(req, res) {
   if (req.method === "POST") {
     const data = req.body;
 
     const client = await MongoClient.connect(
-      "mongodb+srv://kart1k:kart1ka1shu@cluster0.umz0q.mongodb.net/meetups?retryWrites=true&w=majority"
+      "mongodb+srv://kart1k:EzDblojaEonzWN34@cluster0.umz0q.mongodb.net/meetups?retryWrites=true&w=majority"
     );
     const db = client.db();
 
     const meetupsCollection = db.collection("meetups");
+
     const result = await meetupsCollection.insertOne(data);
+
     console.log(result);
 
     client.close();
